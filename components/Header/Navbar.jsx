@@ -16,10 +16,10 @@ const Navbar = () => {
     }
   }
   return (
-    <div className="px-4 flex justify-center items-center h-14 border-b border-gray-700 header_navbar">
-      <ul className="uppercase flex items-center space-x-6 lg:text-sm text-xs">
-        <li className="navActive">Who we are</li>
-        <li>what we do</li>
+    <div className="px-4 flex justify-center items-center lg:h-14 lg:border-b  border-gray-700 header_navbar py-2 ">
+      <ul className="uppercase grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-0 lg:space-x-4 lg:text-sm text-xs text-center">
+        <li className="navActive w-max">Who we are</li>
+        <li className="w-max">what we do</li>
         <li>became a member</li>
         <li>our mainifesto</li>
       </ul>

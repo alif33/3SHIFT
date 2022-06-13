@@ -2,8 +2,8 @@ import React from "react";
 
 const FooterNavbar = () => {
   return (
-    <div className="flex justify-center items-center h-24">
-      <ul className="uppercase text-sm flex justify-center items-center space-x-8 footer_nav">
+    <div className="flex justify-center items-center py-4 lg:h-24">
+      <ul className="uppercase text-sm  footer_nav grid grid-cols-2 lg:grid-cols-6  md:text-center lg:gap-x-3 gap-6 text-center mx-auto">
         <a href="#">
           <li>became a member</li>
         </a>
@@ -19,8 +19,9 @@ const FooterNavbar = () => {
         <a href="#">
           <li>terms of service</li>
         </a>
-        <li>catalogue</li>
-        <a href="#"></a>
+        <a href="#">
+          <li>catalogue</li>
+        </a>
       </ul>
     </div>
   );

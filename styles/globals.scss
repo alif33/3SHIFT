@@ -8,8 +8,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Roboto", sans-serif;
-  background: #1a1a1a;
-  color: white;
+  // background: #1a1a1a;
+  // color: white;
 }
 
 a {
@@ -28,8 +28,10 @@ a {
       @apply border-rose-400;
     }
   }
+
   ul li {
     position: relative;
+    width: max-content;
     &:hover {
       cursor: pointer;
       &::after {
@@ -41,6 +43,7 @@ a {
     &::after {
       content: "";
       position: absolute;
+      // @apply l bottom-0
       bottom: -95%;
       left: 0%;
       right: 0%;
@@ -50,7 +53,15 @@ a {
     }
   }
 }
-
+@media screen and (max-width: 768px) {
+  .header_navbar {
+    ul li {
+      &::after {
+        bottom: -0%;
+      }
+    }
+  }
+}
 .footer_nav li {
   cursor: pointer;
   &:hover {

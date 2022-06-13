@@ -6,7 +6,7 @@ const Form = () => {
   return (
     <div>
       <FromText />
-      <div className="min-h-screen flex justify-center  mx-auto">
+      <div className="min-h-screen">
         <FromBox />
       </div>
     </div>
