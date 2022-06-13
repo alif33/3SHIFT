@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background: #1a1a1a;
+  color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+.header_navbar {
+  .navActive {
+    &::after {
+      width: 100%;
+      border: 1px solid;
+      @apply border-rose-400;
+    }
+  }
+  ul li {
+    position: relative;
+    &:hover {
+      cursor: pointer;
+      &::after {
+        width: 100%;
+        border: 1px solid;
+        @apply border-rose-400;
+      }
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -95%;
+      left: 0%;
+      right: 0%;
+      width: 0%;
+      @apply transition-all duration-300 ease-in-out;
+      @apply border-rose-400;
+    }
+  }
+}
+
+.footer_nav li {
+  cursor: pointer;
+  &:hover {
+    @apply text-rose-500 transition-all duration-200 ease-in-out;
+  }
+}
