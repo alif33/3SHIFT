@@ -1,8 +1,7 @@
-import nc from 'next-connect';
-import multer from 'multer';
 import { v2 as cloudinary } from 'cloudinary';
+import multer from 'multer';
+import nc from 'next-connect';
 import streamifier from 'streamifier';
-import { isAuth } from '../../../utils/auth';
 
 
 cloudinary.config({
@@ -20,7 +19,9 @@ export const config = {
 const handler = nc();
 const upload = multer();
 
-handler.use(isAuth, upload.array('image')).post(async (req, res) => {
+handler.use( upload.array('images')).post(async (req, res) => {
+
+    console.log(req.body)
 
     const streamUpload = (file) => {
         return new Promise((resolve, reject) => {
@@ -31,7 +32,6 @@ handler.use(isAuth, upload.array('image')).post(async (req, res) => {
                     reject(error);
                 }
             });
-            console.log(file.buffer)
             streamifier.createReadStream(file.buffer).pipe(stream);
         });
     };
