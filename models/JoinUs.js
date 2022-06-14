@@ -53,8 +53,6 @@ const joinUsSchema = new mongoose.Schema(
       trim: true,
     },
     projects: {
-      type: Array,
-
       project1: {
         project_title: {
           type: String,

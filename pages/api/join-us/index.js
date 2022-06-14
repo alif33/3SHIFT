@@ -63,17 +63,14 @@ handler
       skill1,
       project_link1,
       tools1,
-      project_image1,
       project_title2,
       skill2,
       project_link2,
       tools2,
-      project_image2,
       project_title3,
       skill3,
       project_link3,
       tools3,
-      project_image3,
     } = req.body;
 
     if ((project1 && project2) || project3) {
@@ -89,44 +86,45 @@ handler
         instagram,
         linkedin,
         other_link,
-        projects: [
-          {
-            project1: {
-              project_title: project_title1,
-              skill: skill1,
-              tools: tools1,
-              project_link: project_link1,
-              project_image: project1.url,
-            },
+        projects: {
+          project1: {
+            project_title: project_title1,
+            skill: skill1,
+            tools: tools1,
+            project_link: project_link1,
+            project_image: project1.url,
           },
-          {
-            project2: {
-              project_title: project_title2,
-              skill: skill2,
-              tools: tools2,
-              project_link: project_link2,
-              project_image: project2.url,
-            },
+
+          project2: {
+            project_title: project_title2,
+            skill: skill2,
+            tools: tools2,
+            project_link: project_link2,
+            project_image: project2.url,
           },
-          {
-            project3: {
-              project_title: project_title3,
-              skill: skill3,
-              tools: tools3,
-              project_link: project_link3,
-              project_image: project3.url,
-            },
+
+          project3: {
+            project_title: project_title3,
+            skill: skill3,
+            tools: tools3,
+            project_link: project_link3,
+            project_image: project3.url,
           },
-        ],
+        },
       });
 
       if (await joinUs.save()) {
         await db.disconnect();
-        res.status(201).json({
+        res.status(200).json({
           success: true,
           message: "Submitted successfully",
         });
       }
+    }else{
+      res.status(401).json({
+        success: true,
+        message: "Server Error",
+      });
     }
   });
 
