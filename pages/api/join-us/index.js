@@ -44,11 +44,15 @@ handler
       });
     };
 
-    const project1 = await streamUpload(req.files.project_image1[0].buffer);
-    const project2 = await streamUpload(req.files.project_image2[0].buffer);
-    let project3;
-    if (req.files?.project_image3[0].buffer) {
-      project3 = await streamUpload(req.files.project_image3[0].buffer);
+    const project_image1 = await streamUpload(
+      req.files.project_image1[0].buffer
+    );
+    const project_image2 = await streamUpload(
+      req.files.project_image2[0].buffer
+    );
+    let project_image3;
+    if (req.files?.project_image3) {
+      project_image3 = await streamUpload(req.files.project_image3[0].buffer);
     }
 
     const {
@@ -76,7 +80,7 @@ handler
       tools3,
     } = req.body;
 
-    if ((project1 && project2) || project3) {
+    if ((project_image1 && project_image2) || project_image3) {
       await db.connect();
       const joinUs = new JoinUs({
         full_name,
@@ -95,23 +99,22 @@ handler
             skill: skill1,
             tools: tools1,
             project_link: project_link1,
-            project_image: project1.url,
+            project_image: project_image1.url,
           },
-
           project2: {
             project_title: project_title2,
             skill: skill2,
             tools: tools2,
             project_link: project_link2,
-            project_image: project2.url,
+            project_image: project_image2.url,
           },
 
           project3: {
-            project_title: project_title3,
-            skill: skill3,
+            project_title: project_title3 || "",
+            skill: skill3 || "",
             tools: tools3,
-            project_link: project_link3,
-            project_image: project3.url,
+            project_link: project_link3 || "",
+            project_image: project_image3?.url || "",
           },
         },
       });
