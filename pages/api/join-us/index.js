@@ -46,8 +46,11 @@ handler
 
     const project1 = await streamUpload(req.files.project_image1[0].buffer);
     const project2 = await streamUpload(req.files.project_image2[0].buffer);
-    const project3 = await streamUpload(req.files.project_image3[0].buffer);
+    let project3;
 
+    if (req.files?.project_image3) {
+      project3 = await streamUpload(req.files.project_image3[0].buffer);
+    }
     const {
       full_name,
       email,
@@ -120,7 +123,7 @@ handler
           message: "Submitted successfully",
         });
       }
-    }else{
+    } else {
       res.status(401).json({
         success: true,
         message: "Server Error",
