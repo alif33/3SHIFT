@@ -59,6 +59,11 @@ const joinUsSchema = new mongoose.Schema(
           required: true,
           trim: true,
         },
+        description: {
+          type: String,
+          required: true,
+          trim: true,
+        },
         skill: {
           type: String,
           required: true,
@@ -82,6 +87,11 @@ const joinUsSchema = new mongoose.Schema(
       },
       project2: {
         project_title: {
+          type: String,
+          required: true,
+          trim: true,
+        },
+        description: {
           type: String,
           required: true,
           trim: true,
@@ -113,6 +123,11 @@ const joinUsSchema = new mongoose.Schema(
           required: false,
           trim: true,
           default: "",
+        },
+        description: {
+          type: String,
+          required: true,
+          trim: true,
         },
         skill: {
           type: String,
