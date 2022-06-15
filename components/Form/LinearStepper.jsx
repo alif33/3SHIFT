@@ -27,6 +27,8 @@ function getSteps() {
 }
 const PersonalInfos = () => {
   const { control } = useFormContext();
+  const { formState: { errors } } = useForm();
+  console.log(errors)
   return (
     <>
       <div className="flex justify-between items-center">
@@ -36,7 +38,8 @@ const PersonalInfos = () => {
       <div className="grid grid-cols-2 gap-x-4 gap-y-2">
         <Controller
           control={control}
-          name="fullName"
+          name="full_name"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
               id="full-name"
@@ -52,6 +55,7 @@ const PersonalInfos = () => {
         <Controller
           control={control}
           name="email"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
               id="email"
@@ -68,6 +72,7 @@ const PersonalInfos = () => {
         <Controller
           control={control}
           name="city"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
               id="city"
@@ -83,6 +88,7 @@ const PersonalInfos = () => {
         <Controller
           control={control}
           name="phone"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
               id="phone"
@@ -98,7 +104,8 @@ const PersonalInfos = () => {
       </div>
       <Controller
         control={control}
-        name="profile"
+        name="profile_picture"
+        rules={{ required: true }}
         render={({ field }) => (
           <TextField
             id="profile"
@@ -114,6 +121,7 @@ const PersonalInfos = () => {
       <Controller
         control={control}
         name="about"
+        rules={{ required: true }}
         render={({ field }) => (
           <TextField
             id="about"
@@ -130,6 +138,7 @@ const PersonalInfos = () => {
         <Controller
           control={control}
           name="website"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
               id="website"
@@ -145,6 +154,7 @@ const PersonalInfos = () => {
         <Controller
           control={control}
           name="instagram"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
               id="instagram"
@@ -161,6 +171,7 @@ const PersonalInfos = () => {
         <Controller
           control={control}
           name="linkedin"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
               id="linkedin"
@@ -175,7 +186,8 @@ const PersonalInfos = () => {
         />
         <Controller
           control={control}
-          name="otherLinks"
+          name="other_link"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
               id="other-link"
@@ -198,10 +210,11 @@ const ProjectOne = () => {
     <>
       <Controller
         control={control}
-        name="projectOneTitle"
+        name="project_title1"
+        rules={{ required: true }}
         render={({ field }) => (
           <TextField
-            id="projecttitle"
+            id="project_title1"
             label="Project Title"
             variant="standard"
             placeholder="Enter your project title"
@@ -213,10 +226,11 @@ const ProjectOne = () => {
       />
       <Controller
         control={control}
-        name="projectOneDescription"
+        name="project_description1"
+        rules={{ required: true }}
         render={({ field }) => (
           <TextField
-            id="description"
+            id="project_description1"
             label="Description"
             variant="standard"
             placeholder="Project description"
@@ -229,10 +243,11 @@ const ProjectOne = () => {
       <div className="mt-5">
         <Controller
           control={control}
-          name="projectOneSkill"
+          name="project_skill1"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
-              id="skills"
+              id="project_skill1"
               label="skills"
               variant="standard"
               placeholder="Skill "
@@ -246,10 +261,11 @@ const ProjectOne = () => {
       <div className="grid grid-cols-2 gap-x-4">
         <Controller
           control={control}
-          name="projectOneLink"
+          name="project_link1"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
-              id="linktoproject"
+              id="project_link1"
               label="Link to project"
               variant="standard"
               placeholder="Enter your project link"
@@ -261,10 +277,11 @@ const ProjectOne = () => {
         />
         <Controller
           control={control}
-          name="projectOneTools"
+          name="project_tools1"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
-              id="tools"
+              id="project_tools1"
               label="Tools/Software"
               variant="standard"
               placeholder="Enter what you are use"
@@ -277,10 +294,11 @@ const ProjectOne = () => {
       </div>
       <Controller
         control={control}
-        name="projectOneImage"
+        name="project_image1"
+        rules={{ required: true }}
         render={({ field }) => (
           <TextField
-            id="projectOneImage"
+            id="project_image1"
             type="file"
             variant="standard"
             fullWidth
@@ -298,10 +316,11 @@ const ProjectTwo = () => {
     <>
       <Controller
         control={control}
-        name="projectTwoTitle"
+        name="project_title2"
+        rules={{ required: true }}
         render={({ field }) => (
           <TextField
-            id="projecttitle"
+            id="project_title2"
             label="Project Title"
             variant="standard"
             placeholder="Enter your project title"
@@ -313,10 +332,11 @@ const ProjectTwo = () => {
       />
       <Controller
         control={control}
-        name="projectTwoDescription"
+        name="project_description2"
+        rules={{ required: true }}
         render={({ field }) => (
           <TextField
-            id="description"
+            id="project_description2"
             label="Description"
             variant="standard"
             placeholder="Project description"
@@ -329,10 +349,11 @@ const ProjectTwo = () => {
       <div className="mt-5">
         <Controller
           control={control}
-          name="projectTwoSkill"
+          name="project_skill2"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
-              id="skills"
+              id="project_skill2"
               label="skills"
               variant="standard"
               placeholder="Skill "
@@ -346,10 +367,11 @@ const ProjectTwo = () => {
       <div className="grid grid-cols-2 gap-x-4">
         <Controller
           control={control}
-          name="projectTwoLink"
+          name="project_link2"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
-              id="linktoproject"
+              id="project_link2"
               label="Link to project"
               variant="standard"
               placeholder="Enter your project link"
@@ -361,10 +383,11 @@ const ProjectTwo = () => {
         />
         <Controller
           control={control}
-          name="projectOneTools"
+          name="project_tools2"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
-              id="tools"
+              id="project_tools2"
               label="Tools/Software"
               variant="standard"
               placeholder="Enter what you are use"
@@ -377,10 +400,10 @@ const ProjectTwo = () => {
       </div>
       <Controller
         control={control}
-        name="projectTwoImage"
+        name="project_image2"
         render={({ field }) => (
           <TextField
-            id="projectTwoImage"
+            id="project_image2"
             type="file"
             variant="standard"
             fullWidth
@@ -398,10 +421,11 @@ const ProjectThree = () => {
     <>
       <Controller
         control={control}
-        name="projectThreeTitle"
+        name="project_title3"
+        rules={{ required: true }}
         render={({ field }) => (
           <TextField
-            id="projecttitle"
+            id="project_title3"
             label="Project Title"
             variant="standard"
             placeholder="Enter your project title"
@@ -413,10 +437,11 @@ const ProjectThree = () => {
       />
       <Controller
         control={control}
-        name="projectThreeDescription"
+        name="project_description3"
+        rules={{ required: true }}
         render={({ field }) => (
           <TextField
-            id="description"
+            id="project_description3"
             label="Description"
             variant="standard"
             placeholder="Project description"
@@ -429,10 +454,11 @@ const ProjectThree = () => {
       <div className="mt-5">
         <Controller
           control={control}
-          name="projectThreeSkill"
+          name="project_skill3"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
-              id="skills"
+              id="project_skill3"
               label="skills"
               variant="standard"
               placeholder="Skill "
@@ -446,10 +472,11 @@ const ProjectThree = () => {
       <div className="grid grid-cols-2 gap-x-4">
         <Controller
           control={control}
-          name="projectThreeLink"
+          name="project_link3"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
-              id="linktoproject"
+              id="project_link3"
               label="Link to project"
               variant="standard"
               placeholder="Enter your project link"
@@ -461,10 +488,11 @@ const ProjectThree = () => {
         />
         <Controller
           control={control}
-          name="projectThreeTools"
+          name="project_tools3"
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
-              id="tools"
+              id="project_tools3"
               label="Tools/Software"
               variant="standard"
               placeholder="Enter what you are use"
@@ -477,10 +505,11 @@ const ProjectThree = () => {
       </div>
       <Controller
         control={control}
-        name="projectThreeImage"
+        name="project_image3"
+        rules={{ required: true }}
         render={({ field }) => (
           <TextField
-            id="projectThreeImage"
+            id="project_image3"
             type="file"
             variant="standard"
             fullWidth
