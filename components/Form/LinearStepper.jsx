@@ -14,6 +14,7 @@ import {
   Controller,
   FormProvider,
   useFormContext,
+  useFormState
 } from "react-hook-form";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,8 +28,8 @@ function getSteps() {
 }
 const PersonalInfos = () => {
   const { control } = useFormContext();
-  const { formState: { errors } } = useForm();
-  console.log(errors)
+  const {errors} = useFormState();
+
   return (
     <>
       <div className="flex justify-between items-center">
@@ -39,15 +40,18 @@ const PersonalInfos = () => {
         <Controller
           control={control}
           name="full_name"
-          rules={{ required: true }}
+          rules={{ required: 'Name is required' } }
+          
           render={({ field }) => (
             <TextField
+              error={errors.full_name ? true : false}
               id="full-name"
-              label="Full Name"
+              label="Full Name *"
               variant="standard"
               placeholder="Enter Your First Name"
               fullWidth
               margin="dense"
+              
               {...field}
             />
           )}
@@ -58,6 +62,7 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.email ? true : false}
               id="email"
               label="Email"
               variant="standard"
@@ -66,15 +71,16 @@ const PersonalInfos = () => {
               margin="dense"
               {...field}
             />
+            
           )}
         />
-
         <Controller
           control={control}
           name="city"
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.city ? true : false}
               id="city"
               label="City"
               variant="standard"
@@ -91,6 +97,7 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.phone ? true : false}
               id="phone"
               label="Phone"
               variant="standard"
@@ -108,6 +115,7 @@ const PersonalInfos = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
+          error={errors.profile_picture ? true : false}
             id="profile"
             label="Profile"
             variant="standard"
@@ -124,6 +132,7 @@ const PersonalInfos = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
+          error={errors.about ? true : false}
             id="about"
             label="About"
             variant="standard"
@@ -141,6 +150,7 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.website ? true : false}
               id="website"
               label="Website"
               variant="standard"
@@ -157,6 +167,7 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.instagram ? true : false}
               id="instagram"
               label="Instagram"
               variant="standard"
@@ -174,6 +185,7 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.linkedin ? true : false}
               id="linkedin"
               label="Linkedin"
               variant="standard"
@@ -190,7 +202,8 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-              id="other-link"
+            error={errors.other_link ? true : false}
+              id="other_link"
               label="Other Links"
               variant="standard"
               placeholder="Other links"
@@ -206,6 +219,8 @@ const PersonalInfos = () => {
 };
 const ProjectOne = () => {
   const { control } = useFormContext();
+  const {errors} = useFormState();
+
   return (
     <>
       <Controller
@@ -214,6 +229,7 @@ const ProjectOne = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
+          error={errors.project_title1 ? true : false}
             id="project_title1"
             label="Project Title"
             variant="standard"
@@ -230,6 +246,7 @@ const ProjectOne = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
+          error={errors.project_description1 ? true : false}
             id="project_description1"
             label="Description"
             variant="standard"
@@ -247,6 +264,7 @@ const ProjectOne = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.project_skill1 ? true : false}
               id="project_skill1"
               label="skills"
               variant="standard"
@@ -265,6 +283,7 @@ const ProjectOne = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.project_link1 ? true : false}
               id="project_link1"
               label="Link to project"
               variant="standard"
@@ -281,6 +300,7 @@ const ProjectOne = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.project_tools1 ? true : false}
               id="project_tools1"
               label="Tools/Software"
               variant="standard"
@@ -298,6 +318,7 @@ const ProjectOne = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
+          error={errors.project_image1 ? true : false}
             id="project_image1"
             type="file"
             variant="standard"
@@ -312,6 +333,7 @@ const ProjectOne = () => {
 };
 const ProjectTwo = () => {
   const { control } = useFormContext();
+  const {errors} = useFormState();
   return (
     <>
       <Controller
@@ -320,6 +342,7 @@ const ProjectTwo = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
+          error={errors.project_title2 ? true : false}
             id="project_title2"
             label="Project Title"
             variant="standard"
@@ -336,6 +359,7 @@ const ProjectTwo = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
+          error={errors.project_description2 ? true : false}
             id="project_description2"
             label="Description"
             variant="standard"
@@ -353,6 +377,7 @@ const ProjectTwo = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.project_skill2 ? true : false}
               id="project_skill2"
               label="skills"
               variant="standard"
@@ -371,6 +396,7 @@ const ProjectTwo = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.project_link2 ? true : false}
               id="project_link2"
               label="Link to project"
               variant="standard"
@@ -387,6 +413,7 @@ const ProjectTwo = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.project_tools2 ? true : false}
               id="project_tools2"
               label="Tools/Software"
               variant="standard"
@@ -403,6 +430,7 @@ const ProjectTwo = () => {
         name="project_image2"
         render={({ field }) => (
           <TextField
+          error={errors.project_image2 ? true : false}
             id="project_image2"
             type="file"
             variant="standard"
@@ -417,6 +445,7 @@ const ProjectTwo = () => {
 };
 const ProjectThree = () => {
   const { control } = useFormContext();
+  const {errors} = useFormState();
   return (
     <>
       <Controller
@@ -543,40 +572,40 @@ const LinaerStepper = () => {
   const methods = useForm({
     defaultValues: {
       // user information
-      fullName: "",
+      full_name: "",
       email: "",
       city: "",
       phone: "",
-      profile: "",
+      profile_picture: "",
       about: "",
       website: "",
       instagram: "",
       linkedin: "",
-      otherLinks: "",
+      other_link: "",
 
       // project 1
-      projectOneTitle: "",
-      projectOneDescription: "",
-      projectOneSkill: "",
-      projectOneLink: "",
-      projectOneTools: "",
-      projectOneImage: null,
+      project_title1: "",
+      project_description1: "",
+      project_skill1: "",
+      project_link1: "",
+      project_tools1: "",
+      project_image1: null,
 
       // project 2
-      projectTwoTitle: "",
-      projectTwoDescription: "",
-      projectTwoSkill: "",
-      projectTwoLink: "",
-      projectTwoTools: "",
-      projectTwoImage: null,
+      project_title2: "",
+      project_description2: "",
+      project_skill2: "",
+      project_link2: "",
+      project_tools2: "",
+      project_image2: null,
 
       // project 3
-      projectThreeTitle: "",
-      projectThreeDescription: "",
-      projectThreeSkill: "",
-      projectThreeLink: "",
-      projectThreeTools: "",
-      projectThreeImage: null,
+      project_title3: "",
+      project_description3: "",
+      project_skill3: "",
+      project_link3: "",
+      project_tools3: "",
+      project_image3: null,
     },
   });
   const [activeStep, setActiveStep] = useState(0);
