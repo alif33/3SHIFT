@@ -455,6 +455,7 @@ const ProjectThree = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
+          error={errors.project_title3 ? true : false}
             id="project_title3"
             label="Project Title"
             variant="standard"
@@ -471,6 +472,7 @@ const ProjectThree = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
+          error={errors.project_description3 ? true : false}
             id="project_description3"
             label="Description"
             variant="standard"
@@ -488,6 +490,7 @@ const ProjectThree = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.project_skill3 ? true : false}
               id="project_skill3"
               label="skills"
               variant="standard"
@@ -506,6 +509,7 @@ const ProjectThree = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.project_link3 ? true : false}
               id="project_link3"
               label="Link to project"
               variant="standard"
@@ -522,6 +526,7 @@ const ProjectThree = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
+            error={errors.project_tools3 ? true : false}
               id="project_tools3"
               label="Tools/Software"
               variant="standard"
@@ -539,6 +544,7 @@ const ProjectThree = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
+          error={errors.project_image3 ? true : false}
             id="project_image3"
             type="file"
             variant="standard"
@@ -641,6 +647,7 @@ const LinaerStepper = () => {
   const handleSkip = () => {
     if (!isStepSkipped(activeStep)) {
       setSkippedSteps([...skippedSteps, activeStep]);
+      
     }
     setActiveStep(activeStep + 1);
   };
