@@ -71,14 +71,17 @@ handler
       linkedin,
       other_link,
       project_title1,
+      project_description1,
       skill1,
       project_link1,
       tools1,
       project_title2,
+      project_description2,
       skill2,
       project_link2,
       tools2,
       project_title3,
+      project_description3,
       skill3,
       project_link3,
       tools3,
@@ -100,6 +103,7 @@ handler
         projects: {
           project1: {
             project_title: project_title1,
+            description: project_description1,
             skill: skill1,
             tools: tools1,
             project_link: project_link1,
@@ -107,6 +111,7 @@ handler
           },
           project2: {
             project_title: project_title2,
+            description: project_description2,
             skill: skill2,
             tools: tools2,
             project_link: project_link2,
@@ -115,6 +120,7 @@ handler
 
           project3: {
             project_title: project_title3 || "",
+            description: project_description3 || "",
             skill: skill3 || "",
             tools: tools3,
             project_link: project_link3 || "",
