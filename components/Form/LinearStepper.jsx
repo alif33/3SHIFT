@@ -40,7 +40,7 @@ const PersonalInfos = () => {
         <Controller
           control={control}
           name="full_name"
-          rules={{ required: 'Name is required' } }
+          rules={{ required: true } }
           
           render={({ field }) => (
             <TextField
@@ -64,7 +64,7 @@ const PersonalInfos = () => {
             <TextField
             error={errors.email ? true : false}
               id="email"
-              label="Email"
+              label="Email *"
               variant="standard"
               placeholder="Enter Your Email"
               fullWidth
@@ -82,7 +82,7 @@ const PersonalInfos = () => {
             <TextField
             error={errors.city ? true : false}
               id="city"
-              label="City"
+              label="City *"
               variant="standard"
               placeholder="Enter Your City"
               fullWidth
@@ -99,7 +99,7 @@ const PersonalInfos = () => {
             <TextField
             error={errors.phone ? true : false}
               id="phone"
-              label="Phone"
+              label="Phone *"
               variant="standard"
               placeholder="Phone number"
               fullWidth
@@ -117,7 +117,7 @@ const PersonalInfos = () => {
           <TextField
           error={errors.profile_picture ? true : false}
             id="profile"
-            label="Profile"
+            label="Profile *"
             variant="standard"
             placeholder="Enter Profile Picture"
             fullWidth
@@ -134,7 +134,7 @@ const PersonalInfos = () => {
           <TextField
           error={errors.about ? true : false}
             id="about"
-            label="About"
+            label="About *"
             variant="standard"
             placeholder="Write about your-self"
             fullWidth
@@ -152,7 +152,7 @@ const PersonalInfos = () => {
             <TextField
             error={errors.website ? true : false}
               id="website"
-              label="Website"
+              label="Website *"
               variant="standard"
               placeholder="Website link"
               fullWidth
@@ -169,7 +169,7 @@ const PersonalInfos = () => {
             <TextField
             error={errors.instagram ? true : false}
               id="instagram"
-              label="Instagram"
+              label="Instagram *"
               variant="standard"
               placeholder="Your instagrame profile link"
               fullWidth
@@ -187,7 +187,7 @@ const PersonalInfos = () => {
             <TextField
             error={errors.linkedin ? true : false}
               id="linkedin"
-              label="Linkedin"
+              label="Linkedin *"
               variant="standard"
               placeholder="Your linkedin profile link"
               fullWidth
@@ -204,7 +204,7 @@ const PersonalInfos = () => {
             <TextField
             error={errors.other_link ? true : false}
               id="other_link"
-              label="Other Links"
+              label="Other Links *"
               variant="standard"
               placeholder="Other links"
               fullWidth
@@ -220,7 +220,7 @@ const PersonalInfos = () => {
 const ProjectOne = () => {
   const { control } = useFormContext();
   const {errors} = useFormState();
-
+console.log(errors);
   return (
     <>
       <Controller
@@ -231,7 +231,7 @@ const ProjectOne = () => {
           <TextField
           error={errors.project_title1 ? true : false}
             id="project_title1"
-            label="Project Title"
+            label="Project Title *"
             variant="standard"
             placeholder="Enter your project title"
             fullWidth
@@ -248,7 +248,7 @@ const ProjectOne = () => {
           <TextField
           error={errors.project_description1 ? true : false}
             id="project_description1"
-            label="Description"
+            label="Description *"
             variant="standard"
             placeholder="Project description"
             fullWidth
@@ -266,7 +266,7 @@ const ProjectOne = () => {
             <TextField
             error={errors.project_skill1 ? true : false}
               id="project_skill1"
-              label="skills"
+              label="skills *"
               variant="standard"
               placeholder="Skill "
               fullWidth
@@ -285,7 +285,7 @@ const ProjectOne = () => {
             <TextField
             error={errors.project_link1 ? true : false}
               id="project_link1"
-              label="Link to project"
+              label="Link to project *"
               variant="standard"
               placeholder="Enter your project link"
               fullWidth
@@ -302,7 +302,7 @@ const ProjectOne = () => {
             <TextField
             error={errors.project_tools1 ? true : false}
               id="project_tools1"
-              label="Tools/Software"
+              label="Tools/Software *"
               variant="standard"
               placeholder="Enter what you are use"
               fullWidth
@@ -344,7 +344,7 @@ const ProjectTwo = () => {
           <TextField
           error={errors.project_title2 ? true : false}
             id="project_title2"
-            label="Project Title"
+            label="Project Title *"
             variant="standard"
             placeholder="Enter your project title"
             fullWidth
@@ -361,7 +361,7 @@ const ProjectTwo = () => {
           <TextField
           error={errors.project_description2 ? true : false}
             id="project_description2"
-            label="Description"
+            label="Description *"
             variant="standard"
             placeholder="Project description"
             fullWidth
@@ -379,7 +379,7 @@ const ProjectTwo = () => {
             <TextField
             error={errors.project_skill2 ? true : false}
               id="project_skill2"
-              label="skills"
+              label="skills *"
               variant="standard"
               placeholder="Skill "
               fullWidth
@@ -398,7 +398,7 @@ const ProjectTwo = () => {
             <TextField
             error={errors.project_link2 ? true : false}
               id="project_link2"
-              label="Link to project"
+              label="Link to project *"
               variant="standard"
               placeholder="Enter your project link"
               fullWidth
@@ -415,7 +415,7 @@ const ProjectTwo = () => {
             <TextField
             error={errors.project_tools2 ? true : false}
               id="project_tools2"
-              label="Tools/Software"
+              label="Tools/Software *"
               variant="standard"
               placeholder="Enter what you are use"
               fullWidth
@@ -428,6 +428,7 @@ const ProjectTwo = () => {
       <Controller
         control={control}
         name="project_image2"
+        rules={{ required: true }}
         render={({ field }) => (
           <TextField
           error={errors.project_image2 ? true : false}
