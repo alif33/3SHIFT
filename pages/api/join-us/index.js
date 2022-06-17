@@ -55,10 +55,6 @@ handler
       project_image3 = await streamUpload(req.files.project_image3[0].buffer);
     }
 
-
-    if (req.files?.project_image3) {
-      project3 = await streamUpload(req.files.project_image3[0].buffer);
-    }
     const {
       full_name,
       email,

@@ -16,6 +16,7 @@ import {
   useFormContext,
   useFormState
 } from "react-hook-form";
+import { postData } from "../../__lib__/helpers/HttpService";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -220,7 +221,9 @@ const PersonalInfos = () => {
 const ProjectOne = () => {
   const { control } = useFormContext();
   const {errors} = useFormState();
-console.log(errors);
+  const [projectImage1, setProjectImage1] = useState(null)
+  // console.log(Boolean(errors.project_image1) === Boolean(projectImage1))
+  
   return (
     <>
       <Controller
@@ -315,16 +318,17 @@ console.log(errors);
       <Controller
         control={control}
         name="project_image1"
-        rules={{ required: true }}
+        rules={{ required:  true }}
         render={({ field }) => (
           <TextField
-          error={errors.project_image1 ? true : false}
+          error={errors.project_image1 ? false : true}
             id="project_image1"
             type="file"
             variant="standard"
             fullWidth
-            margin="dense"
-            {...field}
+            onChange={e => {
+              field.onChange(e.target.files[0])
+            }}
           />
         )}
       />
@@ -334,6 +338,7 @@ console.log(errors);
 const ProjectTwo = () => {
   const { control } = useFormContext();
   const {errors} = useFormState();
+  const [projectImage2, setProjectImage2] = useState(null)
   return (
     <>
       <Controller
@@ -429,7 +434,7 @@ const ProjectTwo = () => {
         control={control}
         name="project_image2"
         rules={{ required: true }}
-        render={({ field }) => (
+        render={({ field: { onChange, onBlur, name, value, ref } }) => (
           <TextField
           error={errors.project_image2 ? true : false}
             id="project_image2"
@@ -437,7 +442,11 @@ const ProjectTwo = () => {
             variant="standard"
             fullWidth
             margin="dense"
-            {...field}
+            onChange={e => setProjectImage2(e.target.files[0])} // send value to hook form 
+            onBlur={onBlur} // notify when input is touched/blur
+            value={value} // input value
+            name={name} // send down the input name
+            inputRef={ref}
           />
         )}
       />
@@ -447,6 +456,7 @@ const ProjectTwo = () => {
 const ProjectThree = () => {
   const { control } = useFormContext();
   const {errors} = useFormState();
+  const [projectImage3, setProjectImage3] = useState(null)
   return (
     <>
       <Controller
@@ -542,7 +552,7 @@ const ProjectThree = () => {
         control={control}
         name="project_image3"
         rules={{ required: true }}
-        render={({ field }) => (
+        render={({ field: { onChange, onBlur, name, value, ref } }) => (
           <TextField
           error={errors.project_image3 ? true : false}
             id="project_image3"
@@ -550,7 +560,11 @@ const ProjectThree = () => {
             variant="standard"
             fullWidth
             margin="dense"
-            {...field}
+            onChange={e => setProjectImage3(e.target.files[0])} // send value to hook form 
+            onBlur={onBlur} // notify when input is touched/blur
+            value={value} // input value
+            name={name} // send down the input name
+            inputRef={ref}
           />
         )}
       />
@@ -575,6 +589,7 @@ function getStepContent(step) {
 }
 
 const LinaerStepper = () => {
+  const [disable, setDisable] = useState(false)
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
@@ -628,9 +643,39 @@ const LinaerStepper = () => {
   };
 
   const handleNext = (data) => {
+    console.log(data)
     if (activeStep == steps.length - 1) {
-      console.log(data);
+      const formData = new FormData()
+      formData.append("full_name", data.full_name)
+      formData.append("email", data.email)
+      formData.append("city", data.city)
+      formData.append("profile_picture", data.profile_picture)
+      formData.append("about", data.about)
+      formData.append("website", data.website)
+      formData.append("instagram", data.instagram)
+      formData.append("linkedin", data.linkedin)
+      formData.append("other_link", data.other_link)
+      formData.append("project_title1", data.project_title1)
+      formData.append("skill1", data.skill1)
+      formData.append("project_link1", data.project_link1)
+      formData.append("tools1", data.tools1)
+      formData.append("project_image1", projectImage1 )
+      formData.append("project_description2", data.project_description2)
+      formData.append("project_title2", data.project_title2)
+      formData.append("skill2", data.skill2)
+      formData.append("project_link2", data.project_link2)
+      formData.append("tools2", data.tools2)
+      formData.append("project_image2", projectImage2)
+      formData.append("project_description2", data.project_description2)
+      formData.append("project_title3", data.project_title3)
+      formData.append("skill3", data.skill3)
+      formData.append("project_link3", data.project_link3)
+      formData.append("tools3", data.tools3)
+      formData.append("project_image3", projectImage3)
+      formData.append("project_description3", data.project_description3)
       // here send this data in your specified database
+
+      // formSubmit(formData)
       setActiveStep(activeStep + 1);
     } else {
       setActiveStep(activeStep + 1);
@@ -652,6 +697,13 @@ const LinaerStepper = () => {
     setActiveStep(activeStep + 1);
   };
 
+
+
+const formSubmit = async(data) => {
+  setDisable(true)
+  const res = await postData('/join-us', data, setDisable)
+  console.log(res)
+}
   // const onSubmit = (data) => {
   //   if (activeStep == steps.length - 1) {
   //     console.log(data);
