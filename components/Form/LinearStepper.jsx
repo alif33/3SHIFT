@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { AiFillCheckCircle } from "react-icons/ai";
 import {
-  Typography,
-  TextField,
   Button,
-  Stepper,
   Step,
   StepLabel,
+  Stepper,
+  TextField,
+  Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { useState } from "react";
 import {
-  useForm,
   Controller,
   FormProvider,
+  useForm,
   useFormContext,
-  useFormState
+  useFormState,
 } from "react-hook-form";
+import { AiFillCheckCircle } from "react-icons/ai";
 import { postData } from "../../__lib__/helpers/HttpService";
 
 const useStyles = makeStyles((theme) => ({
@@ -29,7 +29,7 @@ function getSteps() {
 }
 const PersonalInfos = () => {
   const { control } = useFormContext();
-  const {errors} = useFormState();
+  const { errors } = useFormState();
 
   return (
     <>
@@ -41,8 +41,7 @@ const PersonalInfos = () => {
         <Controller
           control={control}
           name="full_name"
-          rules={{ required: true } }
-          
+          rules={{ required: true }}
           render={({ field }) => (
             <TextField
               error={errors.full_name ? true : false}
@@ -52,7 +51,6 @@ const PersonalInfos = () => {
               placeholder="Enter Your First Name"
               fullWidth
               margin="dense"
-              
               {...field}
             />
           )}
@@ -63,7 +61,7 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.email ? true : false}
+              error={errors.email ? true : false}
               id="email"
               label="Email *"
               variant="standard"
@@ -72,7 +70,6 @@ const PersonalInfos = () => {
               margin="dense"
               {...field}
             />
-            
           )}
         />
         <Controller
@@ -81,7 +78,7 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.city ? true : false}
+              error={errors.city ? true : false}
               id="city"
               label="City *"
               variant="standard"
@@ -98,7 +95,8 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.phone ? true : false}
+              type="number"
+              error={errors.phone ? true : false}
               id="phone"
               label="Phone *"
               variant="standard"
@@ -116,7 +114,7 @@ const PersonalInfos = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
-          error={errors.profile_picture ? true : false}
+            error={errors.profile_picture ? true : false}
             id="profile"
             label="Profile *"
             variant="standard"
@@ -133,7 +131,7 @@ const PersonalInfos = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
-          error={errors.about ? true : false}
+            error={errors.about ? true : false}
             id="about"
             label="About *"
             variant="standard"
@@ -151,7 +149,7 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.website ? true : false}
+              error={errors.website ? true : false}
               id="website"
               label="Website *"
               variant="standard"
@@ -168,7 +166,7 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.instagram ? true : false}
+              error={errors.instagram ? true : false}
               id="instagram"
               label="Instagram *"
               variant="standard"
@@ -186,7 +184,7 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.linkedin ? true : false}
+              error={errors.linkedin ? true : false}
               id="linkedin"
               label="Linkedin *"
               variant="standard"
@@ -203,7 +201,7 @@ const PersonalInfos = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.other_link ? true : false}
+              error={errors.other_link ? true : false}
               id="other_link"
               label="Other Links *"
               variant="standard"
@@ -220,9 +218,8 @@ const PersonalInfos = () => {
 };
 const ProjectOne = () => {
   const { control } = useFormContext();
-  const {errors} = useFormState();
-  
-  
+  const { errors } = useFormState();
+
   return (
     <>
       <Controller
@@ -231,7 +228,7 @@ const ProjectOne = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
-          error={errors.project_title1 ? true : false}
+            error={errors.project_title1 ? true : false}
             id="project_title1"
             label="Project Title *"
             variant="standard"
@@ -248,7 +245,7 @@ const ProjectOne = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
-          error={errors.project_description1 ? true : false}
+            error={errors.project_description1 ? true : false}
             id="project_description1"
             label="Description *"
             variant="standard"
@@ -266,7 +263,7 @@ const ProjectOne = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.project_skill1 ? true : false}
+              error={errors.project_skill1 ? true : false}
               id="project_skill1"
               label="skills *"
               variant="standard"
@@ -285,7 +282,7 @@ const ProjectOne = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.project_link1 ? true : false}
+              error={errors.project_link1 ? true : false}
               id="project_link1"
               label="Link to project *"
               variant="standard"
@@ -302,7 +299,7 @@ const ProjectOne = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.project_tools1 ? true : false}
+              error={errors.project_tools1 ? true : false}
               id="project_tools1"
               label="Tools/Software *"
               variant="standard"
@@ -317,16 +314,16 @@ const ProjectOne = () => {
       <Controller
         control={control}
         name="project_image1"
-        rules={{ required:  true }}
+        rules={{ required: true }}
         render={({ field }) => (
           <TextField
-          error={errors.project_image1 ? true : false}
+            error={errors.project_image1 ? true : false}
             id="project_image1"
             type="file"
             variant="standard"
             fullWidth
-            onChange={e => {
-              field.onChange(e.target.files[0])
+            onChange={(e) => {
+              field.onChange(e.target.files[0]);
             }}
           />
         )}
@@ -336,7 +333,7 @@ const ProjectOne = () => {
 };
 const ProjectTwo = () => {
   const { control } = useFormContext();
-  const {errors} = useFormState();
+  const { errors } = useFormState();
   return (
     <>
       <Controller
@@ -345,7 +342,7 @@ const ProjectTwo = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
-          error={errors.project_title2 ? true : false}
+            error={errors.project_title2 ? true : false}
             id="project_title2"
             label="Project Title *"
             variant="standard"
@@ -362,7 +359,7 @@ const ProjectTwo = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
-          error={errors.project_description2 ? true : false}
+            error={errors.project_description2 ? true : false}
             id="project_description2"
             label="Description *"
             variant="standard"
@@ -380,7 +377,7 @@ const ProjectTwo = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.project_skill2 ? true : false}
+              error={errors.project_skill2 ? true : false}
               id="project_skill2"
               label="skills *"
               variant="standard"
@@ -399,7 +396,7 @@ const ProjectTwo = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.project_link2 ? true : false}
+              error={errors.project_link2 ? true : false}
               id="project_link2"
               label="Link to project *"
               variant="standard"
@@ -416,7 +413,7 @@ const ProjectTwo = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.project_tools2 ? true : false}
+              error={errors.project_tools2 ? true : false}
               id="project_tools2"
               label="Tools/Software *"
               variant="standard"
@@ -432,16 +429,16 @@ const ProjectTwo = () => {
         control={control}
         name="project_image2"
         rules={{ required: true }}
-        render={({ field}) => (
+        render={({ field }) => (
           <TextField
-          error={errors.project_image2 ? true : false}
+            error={errors.project_image2 ? true : false}
             id="project_image2"
             type="file"
             variant="standard"
             fullWidth
             margin="dense"
-            onChange={e => {
-              field.onChange(e.target.files[0])
+            onChange={(e) => {
+              field.onChange(e.target.files[0]);
             }}
           />
         )}
@@ -451,8 +448,8 @@ const ProjectTwo = () => {
 };
 const ProjectThree = () => {
   const { control } = useFormContext();
-  const {errors} = useFormState();
-  const [projectImage3, setProjectImage3] = useState(null)
+  const { errors } = useFormState();
+  const [projectImage3, setProjectImage3] = useState(null);
   return (
     <>
       <Controller
@@ -461,7 +458,7 @@ const ProjectThree = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
-          error={errors.project_title3 ? true : false}
+            error={errors.project_title3 ? true : false}
             id="project_title3"
             label="Project Title"
             variant="standard"
@@ -478,7 +475,7 @@ const ProjectThree = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
-          error={errors.project_description3 ? true : false}
+            error={errors.project_description3 ? true : false}
             id="project_description3"
             label="Description"
             variant="standard"
@@ -496,7 +493,7 @@ const ProjectThree = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.project_skill3 ? true : false}
+              error={errors.project_skill3 ? true : false}
               id="project_skill3"
               label="skills"
               variant="standard"
@@ -515,7 +512,7 @@ const ProjectThree = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.project_link3 ? true : false}
+              error={errors.project_link3 ? true : false}
               id="project_link3"
               label="Link to project"
               variant="standard"
@@ -532,7 +529,7 @@ const ProjectThree = () => {
           rules={{ required: true }}
           render={({ field }) => (
             <TextField
-            error={errors.project_tools3 ? true : false}
+              error={errors.project_tools3 ? true : false}
               id="project_tools3"
               label="Tools/Software"
               variant="standard"
@@ -550,14 +547,14 @@ const ProjectThree = () => {
         rules={{ required: true }}
         render={({ field }) => (
           <TextField
-          error={errors.project_image3 ? true : false}
+            error={errors.project_image3 ? true : false}
             id="project_image3"
             type="file"
             variant="standard"
             fullWidth
             margin="dense"
-            onChange={e => {
-              field.onChange(e.target.files[0])
+            onChange={(e) => {
+              field.onChange(e.target.files[0]);
             }}
           />
         )}
@@ -583,7 +580,8 @@ function getStepContent(step) {
 }
 
 const LinaerStepper = () => {
-  const [disable, setDisable] = useState(false)
+  const [disable, setDisable] = useState(false);
+
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
@@ -633,45 +631,60 @@ const LinaerStepper = () => {
   };
 
   const isStepSkipped = (step) => {
+    console.log(step);
     return skippedSteps.includes(step);
   };
 
-  const handleNext =  async (data) => {
+  const handleNext = async (data) => {
     if (activeStep == steps.length - 1) {
-    console.log(data)
+      const formData = new FormData();
 
-      const formData = await new FormData()
-      formData.append("full_name", data.full_name)
-      formData.append("email", data.email)
-      formData.append("city", data.city)
-      formData.append("profile_picture", data.profile_picture)
-      formData.append("about", data.about)
-      formData.append("website", data.website)
-      formData.append("instagram", data.instagram)
-      formData.append("linkedin", data.linkedin)
-      formData.append("other_link", data.other_link)
-      formData.append("project_title1", data.project_title1)
-      formData.append("skill1", data.skill1)
-      formData.append("project_link1", data.project_link1)
-      formData.append("tools1", data.tools1)
-      formData.append("project_image1", data.project_image1 )
-      formData.append("project_description2", data.project_description2)
-      formData.append("project_title2", data.project_title2)
-      formData.append("skill2", data.skill2)
-      formData.append("project_link2", data.project_link2)
-      formData.append("tools2", data.tools2)
-      formData.append("project_image2", data.project_image2)
-      formData.append("project_description2", data.project_description2)
-      formData.append("project_title3", data.project_title3)
-      formData.append("skill3", data.skill3)
-      formData.append("project_link3", data.project_link3)
-      formData.append("tools3", data.tools3)
-      formData.append("project_image3", data.project_image3)
-      formData.append("project_description3", data.project_description3)
+      //personal info
+      formData.append("full_name", data.full_name);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone);
+      formData.append("city", data.city);
+      formData.append("profile_picture", data.profile_picture);
+      formData.append("about", data.about);
+      formData.append("website", data.website);
+      formData.append("instagram", data.instagram);
+      formData.append("linkedin", data.linkedin);
+      formData.append("other_link", data.other_link);
+
+      //project one
+      formData.append("project_title1", data.project_title1);
+      formData.append("skill1", data.skill1);
+      formData.append("project_link1", data.project_link1);
+      formData.append("tools1", data.tools1);
+      formData.append("project_image1", data.project_image1);
+      formData.append("project_description1", data.project_description1);
+
+      //project two
+
+      formData.append("project_title2", data.project_title2);
+      formData.append("skill2", data.skill2);
+      formData.append("project_link2", data.project_link2);
+      formData.append("tools2", data.tools2);
+      formData.append("project_image2", data.project_image2);
+      formData.append("project_description2", data.project_description2);
+
+      //project three
+      formData.append("project_title3", data.project_title3);
+      formData.append("skill3", data.skill3);
+      formData.append("project_link3", data.project_link3);
+      formData.append("tools3", data.tools3);
+      formData.append("project_image3", data.project_image3);
+      formData.append("project_description3", data.project_description3);
       // here send this data in your specified database
 
-     await formSubmit(formData)
-      setActiveStep(activeStep + 1);
+      // submit data function
+      const res = await formSubmit(formData);
+      if (res.success) {
+        setDisable(false);
+        setActiveStep(activeStep + 1);
+      } else {
+        setDisable(false);
+      }
     } else {
       setActiveStep(activeStep + 1);
       setSkippedSteps(
@@ -687,18 +700,14 @@ const LinaerStepper = () => {
   const handleSkip = () => {
     if (!isStepSkipped(activeStep)) {
       setSkippedSteps([...skippedSteps, activeStep]);
-      
     }
     setActiveStep(activeStep + 1);
   };
 
-
-
-const formSubmit = async(data) => {
-  setDisable(true)
-  const res = await postData('/join-us', data, setDisable)
-  console.log(res)
-}
+  const formSubmit = async (data) => {
+    setDisable(true);
+    return await postData("/join-us", data, setDisable);
+  };
   // const onSubmit = (data) => {
   //   if (activeStep == steps.length - 1) {
   //     console.log(data);
@@ -769,6 +778,7 @@ const formSubmit = async(data) => {
                     className={classes.button}
                     variant="contained"
                     color="primary"
+                    type="submit"
                     onClick={handleSkip}
                   >
                     skip
@@ -780,6 +790,7 @@ const formSubmit = async(data) => {
                   color="primary"
                   // onClick={handleNext}
                   type="submit"
+                  disabled={disable}
                 >
                   {activeStep === steps.length - 1 ? "Submit" : "Next step"}
                 </Button>
