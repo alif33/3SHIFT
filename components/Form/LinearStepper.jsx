@@ -221,8 +221,7 @@ const PersonalInfos = () => {
 const ProjectOne = () => {
   const { control } = useFormContext();
   const {errors} = useFormState();
-  const [projectImage1, setProjectImage1] = useState(null)
-  // console.log(Boolean(errors.project_image1) === Boolean(projectImage1))
+  
   
   return (
     <>
@@ -321,7 +320,7 @@ const ProjectOne = () => {
         rules={{ required:  true }}
         render={({ field }) => (
           <TextField
-          error={errors.project_image1 ? false : true}
+          error={errors.project_image1 ? true : false}
             id="project_image1"
             type="file"
             variant="standard"
@@ -338,7 +337,6 @@ const ProjectOne = () => {
 const ProjectTwo = () => {
   const { control } = useFormContext();
   const {errors} = useFormState();
-  const [projectImage2, setProjectImage2] = useState(null)
   return (
     <>
       <Controller
@@ -434,7 +432,7 @@ const ProjectTwo = () => {
         control={control}
         name="project_image2"
         rules={{ required: true }}
-        render={({ field: { onChange, onBlur, name, value, ref } }) => (
+        render={({ field}) => (
           <TextField
           error={errors.project_image2 ? true : false}
             id="project_image2"
@@ -442,11 +440,9 @@ const ProjectTwo = () => {
             variant="standard"
             fullWidth
             margin="dense"
-            onChange={e => setProjectImage2(e.target.files[0])} // send value to hook form 
-            onBlur={onBlur} // notify when input is touched/blur
-            value={value} // input value
-            name={name} // send down the input name
-            inputRef={ref}
+            onChange={e => {
+              field.onChange(e.target.files[0])
+            }}
           />
         )}
       />
@@ -552,7 +548,7 @@ const ProjectThree = () => {
         control={control}
         name="project_image3"
         rules={{ required: true }}
-        render={({ field: { onChange, onBlur, name, value, ref } }) => (
+        render={({ field }) => (
           <TextField
           error={errors.project_image3 ? true : false}
             id="project_image3"
@@ -560,11 +556,9 @@ const ProjectThree = () => {
             variant="standard"
             fullWidth
             margin="dense"
-            onChange={e => setProjectImage3(e.target.files[0])} // send value to hook form 
-            onBlur={onBlur} // notify when input is touched/blur
-            value={value} // input value
-            name={name} // send down the input name
-            inputRef={ref}
+            onChange={e => {
+              field.onChange(e.target.files[0])
+            }}
           />
         )}
       />
@@ -642,10 +636,11 @@ const LinaerStepper = () => {
     return skippedSteps.includes(step);
   };
 
-  const handleNext = (data) => {
-    console.log(data)
+  const handleNext =  async (data) => {
     if (activeStep == steps.length - 1) {
-      const formData = new FormData()
+    console.log(data)
+
+      const formData = await new FormData()
       formData.append("full_name", data.full_name)
       formData.append("email", data.email)
       formData.append("city", data.city)
@@ -659,23 +654,23 @@ const LinaerStepper = () => {
       formData.append("skill1", data.skill1)
       formData.append("project_link1", data.project_link1)
       formData.append("tools1", data.tools1)
-      formData.append("project_image1", projectImage1 )
+      formData.append("project_image1", data.project_image1 )
       formData.append("project_description2", data.project_description2)
       formData.append("project_title2", data.project_title2)
       formData.append("skill2", data.skill2)
       formData.append("project_link2", data.project_link2)
       formData.append("tools2", data.tools2)
-      formData.append("project_image2", projectImage2)
+      formData.append("project_image2", data.project_image2)
       formData.append("project_description2", data.project_description2)
       formData.append("project_title3", data.project_title3)
       formData.append("skill3", data.skill3)
       formData.append("project_link3", data.project_link3)
       formData.append("tools3", data.tools3)
-      formData.append("project_image3", projectImage3)
+      formData.append("project_image3", data.project_image3)
       formData.append("project_description3", data.project_description3)
       // here send this data in your specified database
 
-      // formSubmit(formData)
+     await formSubmit(formData)
       setActiveStep(activeStep + 1);
     } else {
       setActiveStep(activeStep + 1);

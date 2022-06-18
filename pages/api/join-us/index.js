@@ -29,8 +29,7 @@ handler
     ])
   )
   .post(async (req, res) => {
-    // console.log(req.files.project_image1[0].buffer, "hello world");
-
+console.log(req.body.project_link1)
     const streamUpload = (file) => {
       return new Promise((resolve, reject) => {
         const stream = cloudinary.uploader.upload_stream((error, result) => {
