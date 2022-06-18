@@ -581,7 +581,7 @@ function getStepContent(step) {
 
 const LinaerStepper = () => {
   const [disable, setDisable] = useState(false);
-
+  const [skipData, setSkipData] = useState({});
   const classes = useStyles();
   const methods = useForm({
     defaultValues: {
@@ -631,11 +631,11 @@ const LinaerStepper = () => {
   };
 
   const isStepSkipped = (step) => {
-    console.log(step);
     return skippedSteps.includes(step);
   };
 
   const handleNext = async (data) => {
+    setSkipData({...skipData, data})
     if (activeStep == steps.length - 1) {
       const formData = new FormData();
 
@@ -680,6 +680,7 @@ const LinaerStepper = () => {
       // submit data function
       const res = await formSubmit(formData);
       if (res.success) {
+        // console.log(res.message);
         setDisable(false);
         setActiveStep(activeStep + 1);
       } else {
@@ -697,11 +698,53 @@ const LinaerStepper = () => {
     setActiveStep(activeStep - 1);
   };
 
-  const handleSkip = () => {
-    if (!isStepSkipped(activeStep)) {
-      setSkippedSteps([...skippedSteps, activeStep]);
-    }
-    setActiveStep(activeStep + 1);
+  const handleSkip = async () => {
+
+    
+    const formData = new FormData();
+      const {data} = skipData;
+      //personal info
+      formData.append("full_name", data.full_name);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone);
+      formData.append("city", data.city);
+      formData.append("profile_picture", data.profile_picture);
+      formData.append("about", data.about);
+      formData.append("website", data.website);
+      formData.append("instagram", data.instagram);
+      formData.append("linkedin", data.linkedin);
+      formData.append("other_link", data.other_link);
+
+      //project one
+      formData.append("project_title1", data.project_title1);
+      formData.append("skill1", data.skill1);
+      formData.append("project_link1", data.project_link1);
+      formData.append("tools1", data.tools1);
+      formData.append("project_image1", data.project_image1);
+      formData.append("project_description1", data.project_description1);
+
+      //project two
+
+      formData.append("project_title2", data.project_title2);
+      formData.append("skill2", data.skill2);
+      formData.append("project_link2", data.project_link2);
+      formData.append("tools2", data.tools2);
+      formData.append("project_image2", data.project_image2);
+      formData.append("project_description2", data.project_description2);
+
+      const res = await formSubmit(formData)
+      if(res.success) {
+        // console.log(res.message)
+        setDisable(false)
+        if (!isStepSkipped(activeStep)) {
+          setSkippedSteps([...skippedSteps, activeStep]);
+        }
+        setActiveStep(activeStep + 1);
+      }else{
+        setDisable(false)
+      }
+
+    
   };
 
   const formSubmit = async (data) => {
@@ -780,6 +823,7 @@ const LinaerStepper = () => {
                     color="primary"
                     type="submit"
                     onClick={handleSkip}
+                    disabled={disable}
                   >
                     skip
                   </Button>
